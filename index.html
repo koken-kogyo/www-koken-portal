@@ -1,0 +1,104 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Koken Portal Site</title>
+    <meta charset="UTF-8">
+    <!-- レスポンシブwebデザインの指定 --><!-- デバイスの横幅合わせ,等倍表示（半角空白入れるな！） -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- https://fontawesome.com/ -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/style-basic.css">
+    <link rel="stylesheet" type="text/css" href="./css/style-top-body.css">
+    <!-- link rel="stylesheet" type="text/css" href="./css/reset.css" -->
+    <link rel="icon" href="./images/favicon.ico" sizes="32x32">
+</head>
+<body>
+<div>
+    <!-- Header -->
+	<header>
+	    <header1 id="logo"><a href="/">コーケン工業</a></header1>
+		<header2 id="menutitle">社内ポータルサイト</header2>
+	</header>
+
+    <!-- contents -->
+    <div id="top"></div>
+    <div class="containers">
+        <div class="item-top">
+            <a href="http://www.koken.jpn.com/" target="_blank">
+                <img class="topimg" src="./images/koken.png" height="250px" alt="menu1">
+            </a>
+        </div>
+        <!-- ニュースリストは最大６行まで -->
+        <div class="news-list">
+            <p class="news-list-item"><b>2023-12-23 定時すぎよりケーキを配布いたします</b></p>
+            <hr>
+            <p class="news-list-item">2023-11-20 安否コールテストがあります。必ず返信してください！</p>
+            <hr>
+            <p class="news-list-item">2023-11-19 ニュース　ニュース　ニュース　ニュース</p>
+            <hr>
+            <p class="news-list-item">2023-08-18 〇〇設備メンテナンス 15：00～終日</p>
+            <hr>
+            <p class="news-list-item">2023-08-18 〇〇設備メンテナンス 15：00～終日</p>
+            <hr>
+            <p class="news-list-item">2023-08-18 〇〇設備メンテナンス 15：00～終日</p>
+            <hr>
+        </div>
+        <!-- 業務メニュー 2/25現在３つまで(4*1行, 3*1行, 2*2行) -->
+        <div class="item-title">
+            業務メニュー <i class="fas fa-paw"></i>
+        </div>
+        <div class="item">
+            <a href="http://192.168.96.72:3000/es">
+                <img class="itemimg" src="./images/S気密さん黄銅さん.png" alt="menu2">
+                <div class="itemtext">黄銅ろう付け工程</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="http://192.168.96.72:3000/es">
+                <img class="itemimg" src="./images/S気密さん炉中さん.png" alt="menu2">
+                <div class="itemtext">炉中ろう付け工程</div>
+            </a>
+        </div>
+        <div class="item">
+            <!-- PC-Edgeでの検証　開く・ダウンロード・コンテント表示・インデックス画像表示はOK -->
+            <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/open.do       ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
+            <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/download.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
+            <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/contentView.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
+            <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/indexView.do  ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
+            <!-- PC-Chromeでの検証　開く　ダウンロードはOK、コンテント表示・インデックス画像表示はNG -->
+            <!--  ⇒ 「DocuWorks Viewerでの表示が指定されていますが、お使いのブラウザではサポートされていません。」 -->
+            <!-- iPadから開くapemsv:192.168.96.208 -->
+            <a href="http://apemsv/PEMasterEM/docspace/sdk/contentView.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank">
+                <img class="itemimg" src="./images/S炉中ろう付け工程(両面).png" alt="menu4">
+            <div class="itemtext">炉中ろう付け出口</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="http://192.168.96.199:3000/mp" target="_blank">
+                <img class="itemimg" src="./images/mp.png" alt="menu3">
+                <div class="itemtext">切 削 工 程</div>
+            </a>
+        </div>
+
+        <!-- その他サービス 2/25現在１つ -->
+        <div class="item-title">
+            その他のサービス <i class="fas fa-paw"></i>
+        </div>
+        <div class="item">
+            <a href="./project-quiz-arcweld">
+                <img class="itemimg" src="./images/電気溶接.png" alt="menu4">
+                <div class="itemtext">MAG溶接クイズ</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+	<footer>
+        <a class="goback" href="javascript:history.back()">[戻る]</a>
+	    <a class="copyright">&copy; 2023 Koken Kogyo Co. All rights reserved.</a>
+        <a class="gotop" href="#">ページの先頭に戻る</a>
+    </footer>
+</div>
+</body>
+</html>

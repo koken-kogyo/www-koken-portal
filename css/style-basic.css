@@ -1,0 +1,118 @@
+@charset "UTF-8";
+body {
+    font-family: "Arial", "メイリオ", sans-serif;
+    position: relative; /* 要素の位置：相対*/
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* background: rgb(0, 168, 169, 1.0); Kubota-Color */
+    /* background: linear-gradient(180deg, rgb(0, 168, 169, 0.5), rgb(62, 173, 242, 0.2)); */
+    background: linear-gradient(110deg, rgb(200, 200, 200, 0.2), rgb(200, 200, 200, 0.7));
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* iOS端末 SafariやIEにEdgeブラウザだと機能しません */
+}
+body > * { box-sizing: border-box; }
+a {
+    text-decoration: none;
+    /* color: darkcyan; */
+    color: rgb(50, 50, 50, 0.8);
+}
+
+/* =========================================================================== */
+/*  header
+/* =========================================================================== */
+header {
+    color: rgb(255,255,255);
+    font-size: x-large;
+    top: 0;
+    width: 100vw;
+    height: 40px;
+    background: rgb(50, 50, 50, 1);
+/*     background: rgb(25 ,110 ,175,1); */
+/*    z-index: 999;*/
+}
+#logo a {
+    position: relative;
+    top: 5px;
+    left: 1rem;
+    color: rgb(255,255,255);
+    text-decoration: none;
+}
+#menutitle {
+    position: relative;
+    top: 5px;
+    left: calc((100vw / 2) - 4.5em - 6em);
+}
+/* iPhone 縦 */
+@media screen and (max-width: 420px) and (orientation: portrait) {
+    #menutitle {
+        left: calc((100vw / 2) - 4.5em);
+    }
+    #logo {
+        display: none;
+    }
+}
+/* iPhone 横 */
+@media screen and (max-height: 420px) and (orientation: landscape) {
+    #menutitle {
+        left: calc((100vh / 2) - 4.5em);
+    }
+}
+
+/* =========================================================================== */
+/*  footer
+/* =========================================================================== */
+footer {
+    position: fixed; /* 要素の位置：絶対*/
+    bottom: 0px;
+    width: 100%;
+    height: 20px;
+    font-size: small;
+    color: #fff;
+    z-index: 555;
+    background: rgb(62,173,242);
+    background: -moz-linear-gradient(top, rgba(62,173,242,1) 0%, rgba(43,101,200,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(62,173,242,1) 0%,rgba(43,101,200,1) 100%);
+    background: linear-gradient(to bottom, rgba(62,173,242,1) 0%,rgba(43,101,200,1) 100%);
+}
+footer a {
+    text-decoration: none;
+    color: #fff;
+}
+/* === [戻る] === */
+footer .goback {
+    position: fixed; /* 要素の位置：絶対*/
+    left: 20px;
+}
+/* === [Copy Right] === */
+footer .copyright {
+    position: fixed;
+    padding: 3px 0 0 0;
+    left: calc((100vw / 2) - 120px);
+}
+/* === [ページの先頭に戻る] === */
+footer .gotop {
+    position: fixed; /* 要素の位置：絶対*/
+    right: 20px;
+}
+
+/* iPhone 縦 */
+@media screen and (max-width: 420px) and (orientation: portrait) {
+    footer {
+        font-size: x-small;
+    }
+    footer .goback {
+        display: none;
+    }
+    footer .copyright {
+        left: 20px;
+    }
+}
+/* iPhone 横 */
+@media screen and (max-height: 420px) and (orientation: landscape) {
+    footer {
+        font-size: x-small;
+    }
+}

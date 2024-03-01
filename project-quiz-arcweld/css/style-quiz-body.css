@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/* =========================================================================== */
+/*  クイズトップ
+/* =========================================================================== */
+.containers {
+	width: 90vw;
+	height: 100%;
+    background: rgb(250, 250, 250);
+    border: 1px solid rgb(230, 230, 230, 1);
+    border-radius: 0.5rem;
+	margin: 1rem auto;
+}
+.containers .item-title {
+    font-size: x-large;
+    margin: 1rem 0 0 1rem;
+    color: #555;
+    font-weight: 900;
+}
+.containers .item {
+	font-size: x-large;
+	margin: 10px;
+	padding: 5px 10px;
+	color: #FFFFFF;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: medium solid #1D3210;
+	background-color: #3B6521;
+}
+.containers a {
+    display: inline-block;
+	color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+}
+.containers p {
+	font-size: x-large;
+	font-weight: 900;
+	margin: 0.5rem 0 0.5rem 0;
+}
+/* mobile */
+@media screen and (max-width: 700px) {
+	.containers .item-title {
+		font-size: medium;
+	}
+	.containers .item {
+		font-size: 0.9rem;
+	}
+	.containers p {
+		font-size: large;
+	}
+}
+
+/* =========================================================================== */
+/*  各問題
+/* =========================================================================== */
+h1 {
+	font-size: 1rem;
+	padding: 0.5rem;			/*文字周りの余白*/
+	line-height: 1.3;			/*行高*/
+	background: #00DDDD;	/*背景色*/
+	vertical-align: middle;	/*上下中央*/
+	border-radius: 5px 5px 5px 5px;/*左側の角を丸く*/
+	margin: 1rem;
+}
+#main_div {
+	font-size: 1.2em;
+	margin: 1rem;
+	padding: 5px 10px;
+	color: #FFFFFF;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: medium solid #1D3210;
+	background-color: #3B6521;
+}
+
+#main_div a {
+	color: #990000;
+}
+
+input[type="button"] {
+
+	appearance: button;	
+	-webkit-appearance: none;
+	cursor: pointer;
+	border-radius: 5px;
+	border-color: #909090;
+	background: #aaa;
+	color: rgb(251, 246, 209);
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+/* =========================================================================== */
+/*  ボタン
+/* =========================================================================== */
+button {
+    font-size: xx-large;
+	font-weight: 900;
+}

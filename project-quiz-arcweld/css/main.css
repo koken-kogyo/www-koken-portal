@@ -1,0 +1,46 @@
+h1 {
+	font-size: 0.8em;
+	padding: 0.5em;			/*文字周りの余白*/
+	display: inline-block;	/*おまじない*/
+	line-height: 1.3;			/*行高*/
+	background: #00DDDD;	/*背景色*/
+	vertical-align: middle;	/*上下中央*/
+	border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
+}
+
+h1:before {
+	content: '●';
+	color: white;
+	margin-right: 8px;
+}
+
+#main_div {
+	font-size: 1.2em;
+	margin: 10px;
+	padding: 5px 10px;
+	color: #FFFFFF;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: medium solid #1D3210;
+	background-color: #3B6521;
+}
+
+#main_div a {
+	color: #990000;
+}
+
+input[type="button"] {
+	/* 文字サイズを1.4emに指定 */
+    font-size: 1.4em;
+
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+
+    /* 縦方向に10px、横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+}
+
+a {
+	font-size: 1.2em;
+}
