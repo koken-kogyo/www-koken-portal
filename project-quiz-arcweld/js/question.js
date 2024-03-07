@@ -13,10 +13,10 @@ window.onload = function(){
     }
 
     document.getElementById("ans_ng2").onclick = function(){
-        location.href = "javascript:answer('ans_ng2', '" + data + "02')";
+        location.href = "javascript:answer('ans_ng2', '" + data + "02');";
     }
 
     document.getElementById("ans_ng3").onclick = function(){
-        location.href = "javascript:answer('ans_ng3', '" + data + "02')";
+        location.href = "javascript:answer('ans_ng3', '" + data + "02');";
     }
 }

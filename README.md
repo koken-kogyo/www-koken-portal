@@ -14,9 +14,10 @@
 ~~~
 ./
 │  .gitignore                                  # ソース管理除外対象  
-│  index.html                                  # 
+│  index.html                                  # Topページ  
 │  README.md                                   # このファイル  
 │  ReleaseNote.txt                             # リリース情報  
+│  settings.html                               # セッティング画面  
 │  
 ├─ css                                        # スタイルシート  
 │          style-basic.css  

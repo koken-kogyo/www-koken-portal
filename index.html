@@ -17,8 +17,9 @@
 <div>
     <!-- Header -->
 	<header>
-	    <header1 id="logo"><a href="/">コーケン工業</a></header1>
+	    <header1 id="logo"><a href="http://192.168.96.72/">コーケン工業</a></header1>
 		<header2 id="menutitle">社内ポータルサイト</header2>
+        <header3 id="settings"><a href="settings.html"><img src="./images/settings.png" height="26px"></a></header3>
 	</header>
 
     <!-- contents -->
@@ -49,35 +50,37 @@
             業務メニュー <i class="fas fa-paw"></i>
         </div>
         <div class="item">
-            <a href="http://192.168.96.72:3000/es">
-                <img class="itemimg" src="./images/S気密さん黄銅さん.png" alt="menu2">
-                <div class="itemtext">黄銅ろう付け工程</div>
+            <a href="javascript:kick('6050');">
+                <img class="itemimg" src="./images/S気密さん黄銅さん.png" alt="menu01">
+                <div class="itemtext">黄銅洩れ検査</div>
             </a>
         </div>
         <div class="item">
-            <a href="http://192.168.96.72:3000/es">
-                <img class="itemimg" src="./images/S気密さん炉中さん.png" alt="menu2">
-                <div class="itemtext">炉中ろう付け工程</div>
+            <a href="javascript:kick('6070');">
+                <img class="itemimg" src="./images/S気密さん炉中さん.png" alt="menu02">
+                <div class="itemtext">炉中洩れ検査</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="javascript:kick('6079');">
+                <img class="itemimg" src="./images/S炉中ろう付け工程(両面).png" alt="menu03">
+                <div class="itemtext">炉中目視検査</div>
             </a>
         </div>
         <div class="item">
             <!-- PC-Edgeでの検証　開く・ダウンロード・コンテント表示・インデックス画像表示はOK -->
             <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/open.do       ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
-            <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/download.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
+            <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/download.do   ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
             <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/contentView.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
             <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/indexView.do  ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
             <!-- PC-Chromeでの検証　開く　ダウンロードはOK、コンテント表示・インデックス画像表示はNG -->
             <!--  ⇒ 「DocuWorks Viewerでの表示が指定されていますが、お使いのブラウザではサポートされていません。」 -->
             <!-- iPadから開くapemsv:192.168.96.208 -->
-            <a href="http://apemsv/PEMasterEM/docspace/sdk/contentView.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank">
-                <img class="itemimg" src="./images/S炉中ろう付け工程(両面).png" alt="menu4">
-            <div class="itemtext">炉中ろう付け出口</div>
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://192.168.96.199:3000/mp" target="_blank">
-                <img class="itemimg" src="./images/mp.png" alt="menu3">
-                <div class="itemtext">切 削 工 程</div>
+            <!-- a href="http://192.168.96.199:3000/mp" target="_blank" -->
+            <!-- div class="itemtext">切 削 工 程</div -->
+            <a href="http://apemsv/PEMasterEM/docspace/sdk/open.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank">
+                <img class="itemimg" src="./images/mp.png" alt="menu04">
+                <div class="itemtext">APEMコンテント表示</div>
             </a>
         </div>
 
@@ -87,8 +90,14 @@
         </div>
         <div class="item">
             <a href="./project-quiz-arcweld">
-                <img class="itemimg" src="./images/電気溶接.png" alt="menu4">
+                <img class="itemimg" src="./images/電気溶接.png" alt="menu11">
                 <div class="itemtext">MAG溶接クイズ</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="./project-quiz-arcweld/ex/question01.html?011000">
+                <img class="itemimg" src="./images/kanji.png" alt="menu12">
+                <div class="itemtext">漢字検定(不定期更新)</div>
             </a>
         </div>
     </div>
@@ -100,5 +109,68 @@
         <a class="gotop" href="#">ページの先頭に戻る</a>
     </footer>
 </div>
+<script type="text/javascript">
+
+    // 各ボタンの画面遷移
+    function kick(odc) {
+
+        // JavascriptでOS（Windows・Linux・Mac・iPad・iPhone）を判定
+        var ua = window.navigator.userAgent.toLowerCase();
+        let myOS = "";
+        if (ua.match("windows") !== null) { myOS = "windows"; } else 
+        if (ua.match("linux") !== null) { myOS = "linux"; } else 
+        if (ua.match("ipad") !== null) { myOS = "ipad"; } else 
+        if (ua.match("mac") !== null) { myOS = "mac"; } else 
+        if (ua.match("iphone") !== null) { myOS = "iphone"; }
+        
+        // ローカルストレージデータを取得
+        var lsOdcd = localStorage.getItem("odcd");
+        var lsUserid = localStorage.getItem("userid");
+        var lsPassword = localStorage.getItem("password");
+        
+        // デバッグ表示
+        // alert("OS:" + myOS + "/odcd" + lsOdcd.substring(0, 4) + "/userid:" + lsUserid + "/" + odc);
+        
+        // <!-- odc:6050 : odcd:60500 -->
+        // <!-- odc:6070 : odcd:60707 / 60708 -->
+        // <!-- odc:6079 : odcd:60717 / 60718 / 60727 / 60728 -->
+        let odcd = "";
+        
+        // 黄銅洩れ検査起動
+        if (odc == "6050") {
+            odcd = "60500";
+        
+        // 炉中洩れ検査起動
+        } else if (odc == "6070") {
+            // ローカルストレージに保存されているodcdと同じボタンが押下された場合に設定値で起動
+            if (lsOdcd != null && lsOdcd != "" && odc == lsOdcd.substring(0, 4)) {
+                odcd = lsOdcd;
+            } else {
+                odcd = "60707";
+            }
+
+        // 炉中目視検査起動
+        } else if (odc == "6079") {
+            // ローカルストレージに保存されているodcdと同じボタンが押下された場合に設定値で起動
+            if (lsOdcd != null && lsOdcd != "" && (lsOdcd.substring(0, 4) == "6071" || lsOdcd.substring(0, 4) == "6072")) {
+                odcd = lsOdcd;
+            } else {
+                odcd = "60717";
+            }
+            
+        // Default起動
+        } else {
+            odcd = "60707"
+        }
+
+        // 自動ログイン設定を判定
+        if (lsOdcd != null && lsOdcd != "") {
+            location.href = `http://192.168.96.72:3000/direct/${lsUserid}/${lsPassword}/es/${odcd}`;
+        } else {
+            location.href = `http://192.168.96.72:3000/es/${odcd}`;
+        }
+
+}
+</script>
 </body>
 </html>

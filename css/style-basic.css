@@ -29,9 +29,9 @@ header {
     top: 0;
     width: 100vw;
     height: 40px;
-    background: rgb(50, 50, 50, 1);
-/*     background: rgb(25 ,110 ,175,1); */
-/*    z-index: 999;*/
+/*    background: rgb(50, 50, 50, 1); */
+    background: rgb(175, 25 ,25, 1);
+    z-index: 999;
 }
 #logo a {
     position: relative;
@@ -44,6 +44,11 @@ header {
     position: relative;
     top: 5px;
     left: calc((100vw / 2) - 4.5em - 6em);
+}
+#settings {
+    position: absolute;
+    top: 7px;
+    right: 0.4em;
 }
 /* iPhone 縦 */
 @media screen and (max-width: 420px) and (orientation: portrait) {
