@@ -9,15 +9,17 @@
     <!-- https://fontawesome.com/ -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style-basic.css">
-    <link rel="stylesheet" type="text/css" href="./css/style-top-body.css">
+    <link rel="stylesheet" type="text/css" href="./css/style-index.css">
     <!-- link rel="stylesheet" type="text/css" href="./css/reset.css" -->
     <link rel="icon" href="./images/favicon.ico" sizes="32x32">
+	<script type="text/javascript">
+    </script>
 </head>
 <body>
 <div>
     <!-- Header -->
 	<header>
-	    <header1 id="logo"><a href="http://192.168.96.72/">コーケン工業</a></header1>
+	    <header1 id="logo"><a href="/">コーケン工業</a></header1>
 		<header2 id="menutitle">社内ポータルサイト</header2>
         <header3 id="settings"><a href="settings.html"><img src="./images/settings.png" height="26px"></a></header3>
 	</header>
@@ -31,7 +33,7 @@
             </a>
         </div>
         <!-- ニュースリストは最大６行まで -->
-        <div class="news-list">
+        <div id="news-list">
             <p class="news-list-item"><b>2023-12-23 定時すぎよりケーキを配布いたします</b></p>
             <hr>
             <p class="news-list-item">2023-11-20 安否コールテストがあります。必ず返信してください！</p>
@@ -50,19 +52,19 @@
             業務メニュー <i class="fas fa-paw"></i>
         </div>
         <div class="item">
-            <a href="javascript:kick('6050');">
+            <a href="javascript:LeaktestReport('6050');">
                 <img class="itemimg" src="./images/S気密さん黄銅さん.png" alt="menu01">
                 <div class="itemtext">黄銅洩れ検査</div>
             </a>
         </div>
         <div class="item">
-            <a href="javascript:kick('6070');">
+            <a href="javascript:LeaktestReport('6070');">
                 <img class="itemimg" src="./images/S気密さん炉中さん.png" alt="menu02">
                 <div class="itemtext">炉中洩れ検査</div>
             </a>
         </div>
         <div class="item">
-            <a href="javascript:kick('6079');">
+            <a href="javascript:LeaktestReport('6079');">
                 <img class="itemimg" src="./images/S炉中ろう付け工程(両面).png" alt="menu03">
                 <div class="itemtext">炉中目視検査</div>
             </a>
@@ -78,9 +80,16 @@
             <!-- iPadから開くapemsv:192.168.96.208 -->
             <!-- a href="http://192.168.96.199:3000/mp" target="_blank" -->
             <!-- div class="itemtext">切 削 工 程</div -->
+
+            <!-- APEM テスト 
             <a href="http://apemsv/PEMasterEM/docspace/sdk/open.do?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank">
                 <img class="itemimg" src="./images/mp.png" alt="menu04">
                 <div class="itemtext">APEMコンテント表示</div>
+            </a>
+            -->
+            <a href="javascript:ManualSearch()">
+                <img class="itemimg" src="./images/sample.png" alt="menu04">
+                <div class="itemtext">手順書表示</div>
             </a>
         </div>
 
@@ -111,11 +120,45 @@
 </div>
 <script type="text/javascript">
 
-    // 各ボタンの画面遷移
-    function kick(odc) {
+    window.onload = function() {
+        const hostname = location.hostname;
+        const xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open('GET', `https://${hostname}/cgi/topics.vbs`, false);
+        xmlHttpRequest.send();
+        if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200 ) {
+            const tag1="<p class='news-list-item'><b>";
+            const topics = decodeURI(xmlHttpRequest.responseText).split("\n\r");
+            const tag2 = "</b></p>";
+            const tag3 = "<hr>";
+            let tmp = "";
+            for (let i = (topics.length - 1); i >= 0; i--) {
+                tmp = tmp + `${tag1}${topics[i]}${tag2}\n${tag3}`;
+                if (topics.length > 6) { if (topics.length - 6 > i) {break;} } // MAX6行
+            }
+            document.getElementById("news-list").innerHTML = tmp;
+        } else {
+            document.getElementById("news-list").innerTEXT = "読み込み失敗";
+        }
+    }
+
+    // 電子マニュアル表示システム起動
+    function ManualSearch() {
+        const hostname = location.hostname;
+        // ローカルストレージデータを取得
+        const lsOdcd = localStorage.getItem("odcd");
+        if (lsOdcd == "" || lsOdcd == null) {
+            alert("先に設定画面にて設置場所の設定を行ってください．");
+            location.href = `./settings.html`;
+            return false;
+        }
+        location.href = `https://${hostname}:53020/${lsOdcd}`;
+    }
+
+    // 洩れ検査作業日報支援システム起動
+    function LeaktestReport(odc) {
 
         // JavascriptでOS（Windows・Linux・Mac・iPad・iPhone）を判定
-        var ua = window.navigator.userAgent.toLowerCase();
+        const ua = window.navigator.userAgent.toLowerCase();
         let myOS = "";
         if (ua.match("windows") !== null) { myOS = "windows"; } else 
         if (ua.match("linux") !== null) { myOS = "linux"; } else 
@@ -124,9 +167,9 @@
         if (ua.match("iphone") !== null) { myOS = "iphone"; }
         
         // ローカルストレージデータを取得
-        var lsOdcd = localStorage.getItem("odcd");
-        var lsUserid = localStorage.getItem("userid");
-        var lsPassword = localStorage.getItem("password");
+        const lsOdcd = localStorage.getItem("odcd");
+        const lsUserid = localStorage.getItem("userid");
+        const lsPassword = localStorage.getItem("password");
         
         // デバッグ表示
         // alert("OS:" + myOS + "/odcd" + lsOdcd.substring(0, 4) + "/userid:" + lsUserid + "/" + odc);
@@ -164,10 +207,11 @@
         }
 
         // 自動ログイン設定を判定
+        const hostname = location.hostname;
         if (lsOdcd != null && lsOdcd != "") {
-            location.href = `http://192.168.96.72:3000/direct/${lsUserid}/${lsPassword}/es/${odcd}`;
+            location.href = `https://${hostname}:53010/direct/${lsUserid}/${lsPassword}/es/${odcd}`;
         } else {
-            location.href = `http://192.168.96.72:3000/es/${odcd}`;
+            location.href = `https://${hostname}:53010/es/${odcd}`;
         }
 
 }

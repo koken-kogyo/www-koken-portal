@@ -1,0 +1,2 @@
+cscript topics.vbs
+pause

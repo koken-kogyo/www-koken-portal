@@ -9,64 +9,24 @@
     <!-- https://fontawesome.com/ -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style-basic.css">
-    <link rel="stylesheet" type="text/css" href="./css/style-top-body.css">
+    <link rel="stylesheet" type="text/css" href="./css/style-settings.css">
     <link rel="icon" href="./images/favicon.ico" sizes="32x32">
-    <style>
-        body {font-size: 1.2em;}
-        .settings {
-            background: rgb(235, 235, 235);
-            border-radius: 10px;
-            margin: 10px auto;
-            width: 90vw;
-        }
-        .setting-items {
-            width: 90%;
-            background: rgb(250, 250, 250);
-            border-radius: 10px;
-            padding: 10px 10px;
-            margin: 10px auto;
-        }
-        .setting-buttons {
-            width: 90%;
-            padding: 10px 0 0 0;
-            margin: auto;
-        }
-        .select-odcd {
-            font-size: 1.2em;
-            padding: 3px;
-            padding-left: 10px;
-            width: 13em;
-            border: 0.1px solid rgba(163, 243, 214, 0.6);
-            border-radius: 0.2em;
-            color:rgb(55, 82, 72);
-            background-color: rgba(163, 243, 214, 0.6);
-            box-shadow: 2px 2px 4px gray;
-            outline: none;
-            cursor: pointer;
-        }
-        .text-r {text-align: right;padding: 5px 0;}
-        .item-title {padding: 0.5em 0 0 4em;}
-        li {list-style:none;}
-        input {font-size: 1.2em;}
-        button {
-            font-size: 1.2em;
-            color: #000;
-            background: rgb(190 ,190 ,190);
-            border: 1.5px solid rgba(90, 90, 90, 0.2);
-            border-radius: 4px;
-        }
-        button:hover {background: rgb(204 ,230 ,250);}
-    </style>
 	<script type="text/javascript">
         window.onload = function(){
-            var odcd = localStorage.getItem("odcd");
             var userid = localStorage.getItem("userid");
             var password = localStorage.getItem("password");
-            // alert(odcd + userid + password);
-            if (odcd != null && odcd != "") {
-                document.querySelector('[name="select-odcd"]').value = odcd;
+            var odcd = localStorage.getItem("odcd");
+            var pdf = localStorage.getItem("pdf");
+            // alert(odcd + ":" + userid + ":" + password + ":" + pdf);
+            if (userid != null && userid != "") {
                 document.getElementById("userid").value = userid;
                 document.getElementById("password").value = password;
+            }
+            if (odcd != null && odcd != "") {
+                document.querySelector('[name="select-odcd"]').value = odcd;
+            }
+            if (pdf != null && pdf != "") {
+                document.querySelector('[name="select-pdf"]').value = pdf;
             }
         }
     </script>
@@ -75,71 +35,98 @@
 <div>
     <!-- Header -->
 	<header>
-	    <header1 id="logo"><a href="http://192.168.96.72/">コーケン工業</a></header1>
+	    <header1 id="logo"><a href="/">コーケン工業</a></header1>
 		<header2 id="menutitle">社内ポータルサイト</header2>
 	</header>
 
     <!-- contents -->
     <div id="top"></div>
     <div class="settings">
-        <!-- その他サービス 2/25現在１つ -->
+
+        <!-- 自動ログイン設定(userid,password) -->
         <div class="item-title">
-            このブラウザの設定 <i class="fas fa-paw"></i>
+            <i class="fas fa-paw"></i> 自動ログイン設定
         </div>
         <table class="setting-items">
             <tr>
-                <td width="35%" class="text-r">設置場所</td>
-                <td width="5%"></td>
-                <td width="60%">
-                    <!-- 工程コード選択 -->
-                    <li>
-                        <select name="select-odcd" title="作業場所の選択" class="select-odcd">
-                            <option value="60707">炉中洩検(1階)</option>
-                            <option value="60708">炉中洩検(2階)</option>
-                            <option value="60500">黄銅洩検</option>
-                            <option value="60717">炉中メッキ他(1階)</option>
-                            <option value="60718">炉中メッキ他(2階)</option>
-                            <option value="60727">炉中目視(1階)</option>
-                            <option value="60728">炉中目視(2階)</option>
-                        </select>
-                    </li>
-                </td>
-            </tr>
-        </table>
-        <table class="setting-items">
-            <tr>
-                <td width="35%" class="text-r">UserID</td>
-                <td width="5%"></td>
-                <td width="60%"><input type="text" id="userid" name="userid"><br></td>
+                <td class="text">UserID</td>
+                <td></td>
+                <td><input type="text" id="userid" name="userid"><br></td>
             </tr>
             <tr>
-                <td class="text-r">Password</td>
+                <td class="text">Password</td>
                 <td></td>
                 <td><input type="password" id="password" name="password"></td>
+                <td class="text-r">
+                    <a href="javascript:setautologin();"><button type="button">保存</button></a>
+                    &nbsp;&nbsp;
+                    <a href="javascript:removeautologin();"><button type="button">削除</button></a>
+                </td>
+        </tr>
+        </table><br>
+
+        <!-- 洩れ検査作業日報(odcd) -->
+        <div class="item-title">
+            <i class="fas fa-paw"></i> 洩れ検査作業日報設定（この端末を設置する場所を選択）
+        </div>
+        <table class="setting-items">
+            <tr>
+                <td class="text">設置場所</td>
+                <td></td>
+                <td>
+                    <select name="select-odcd" title="作業場所の選択" class="select-odcd">
+                        <option value="">未選択</option>
+                        <option value="60707">炉中洩検(1階)</option>
+                        <option value="60708">炉中洩検(2階)</option>
+                        <option value="60500">黄銅洩検</option>
+                        <option value="60717">炉中メッキ他(1階)</option>
+                        <option value="60718">炉中メッキ他(2階)</option>
+                        <option value="60727">炉中目視(1階)</option>
+                        <option value="60728">炉中目視(2階)</option>
+                    </select>
+                </td>
+                <td class="text-r">
+                    <a href="javascript:setodcd();"><button type="button">設定</button></a>
+                    &nbsp;&nbsp;
+                    <a href="javascript:removeodcd();"><button type="button">解除</button></a>
+                </td>
+            </tr>
+        </table><br>
+        
+        <!-- 電子マニュアル表示(pdf) -->
+        <div class="item-title">
+            <i class="fas fa-paw"></i> 電子マニュアル設定（PDF格納フォルダを選択）
+        </div>
+        <table class="setting-items">
+            <tr>
+                <td class="text">格納場所</td>
+                <td></td>
+                <td>
+                    <select name="select-pdf" title="PDF種類の選択" class="select-odcd">
+                        <option value="">未選択</option>
+                        <option value="6077">炉出口検査PDF</option>
+                        <option value="6078">炉投入荷姿PDF</option>
+                    </select>
+                </td>
+                <td class="text-r">
+                    <a href="javascript:setpdf();"><button type="button">設定</button></a>
+                    &nbsp;&nbsp;
+                    <a href="javascript:removepdf();"><button type="button">解除</button></a>
+                </td>
             </tr>
         </table>
-        <tr></tr>
+
+        <!-- 保存せず戻る -->
         <table class="setting-buttons">
             <tr>
-                <td width="40%"></td>
-                <td>
-                    <a href="javascript:localSave();">
-                        <button type="button">保存</button>
-                    </a>
-                    &nbsp;
-                    <a href="javascript:localDelete();">
-                        <button type="button">削除</button>
-                    </a>
-                    &nbsp;
+                <td class="text-r text-btm">
                     <a href="/">
-                        <button type="button">キャンセル</button>
+                        <button type="button">ポータルサイトに戻る</button>
+                        &nbsp;&nbsp;
                     </a>
                 </td>
             </tr>
         </table>
-        <div class="item-title">
-            <a href="/">Topへ戻る</a>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -151,8 +138,7 @@
 </div>
 <script type="text/javascript">
     // ブラウザローカルストレージに保存
-    function localSave() {
-        const odcd = document.querySelector('[name="select-odcd"]').value;
+    function setautologin() {
         const userid = document.getElementById("userid").value;
         const password = document.getElementById("password").value;
         if (userid == null || userid == "") {
@@ -165,19 +151,48 @@
             document.getElementById("password").focus();
             return;
         }
-        localStorage.setItem("odcd", odcd);
         localStorage.setItem("userid", userid);
         localStorage.setItem("password", password);
-        location.href = "/";
+        alert("保存しました．");
     }
     // ブラウザローカルストレージから削除
-    function localDelete() {
-        alert("ローカルストレージから設定を削除します．\n" + "閲覧履歴データ削除（サイトデータ）からも削除できます");
-        localStorage.removeItem("odcd"); 
+    function removeautologin() {
+        localStorage.clear(); // この行はサンプルです（すべて削除されてしまう）
         localStorage.removeItem("userid"); 
         localStorage.removeItem("password"); 
-        localStorage.clear(); // この行はサンプルです。
-        location.href = "/";
+        document.getElementById("userid").value = "";
+        document.getElementById("password").value = "";
+        alert("削除しました．");
+    }
+    // 洩れ検査作業日報 設置場所セット
+    function setodcd() {
+        const odcd = document.querySelector('[name="select-odcd"]').value;
+        if (odcd == null || odcd == "") {
+            alert("設置場所を選択してください．");
+            return;
+        }
+        localStorage.setItem("odcd", odcd);
+        location.reload();
+    }
+    // 洩れ検査作業日報 設置場所解除
+    function removeodcd() {
+        localStorage.removeItem("odcd"); 
+        document.querySelector('[name="select-odcd"]').value = "";
+    }
+    // 電子マニュアル表示 PDF種類セット
+    function setpdf() {
+        const pdf = document.querySelector('[name="select-pdf"]').value;
+        if (pdf == null || pdf == "") {
+            alert("PDF種類を選択してください．");
+            return;
+        }
+        localStorage.setItem("pdf", pdf);
+        location.reload();
+    }
+    // 電子マニュアル表示 PDF種類解除
+    function removepdf() {
+        localStorage.removeItem("pdf"); 
+        document.querySelector('[name="select-pdf"]').value = "";
     }
 </script>
 </body>
