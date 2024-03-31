@@ -159,7 +159,7 @@
         font-size: 0.8rem;
     }
 }
-/* desktop-pc-size: 1300px～ 未完成(今の所、社内端末はない) [4列 x 5行]  */
+/* desktop-pc-size: 1300px～ */
 @media screen and (min-width: 1300px) and (min-height: 800px) {
     .containers {
         margin-top: 30px;

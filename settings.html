@@ -16,7 +16,7 @@
             var userid = localStorage.getItem("userid");
             var password = localStorage.getItem("password");
             var odcd = localStorage.getItem("odcd");
-            var pdf = localStorage.getItem("pdf");
+            var pdfcd = localStorage.getItem("pdfcd");
             // alert(odcd + ":" + userid + ":" + password + ":" + pdf);
             if (userid != null && userid != "") {
                 document.getElementById("userid").value = userid;
@@ -25,8 +25,8 @@
             if (odcd != null && odcd != "") {
                 document.querySelector('[name="select-odcd"]').value = odcd;
             }
-            if (pdf != null && pdf != "") {
-                document.querySelector('[name="select-pdf"]').value = pdf;
+            if (pdfcd != null && pdfcd != "") {
+                document.querySelector('[name="select-pdfcd"]').value = pdfcd;
             }
         }
     </script>
@@ -102,16 +102,16 @@
                 <td class="text">格納場所</td>
                 <td></td>
                 <td>
-                    <select name="select-pdf" title="PDF種類の選択" class="select-odcd">
+                    <select name="select-pdfcd" title="PDF種類の選択" class="select-odcd">
                         <option value="">未選択</option>
                         <option value="6077">炉出口検査PDF</option>
                         <option value="6078">炉投入荷姿PDF</option>
                     </select>
                 </td>
                 <td class="text-r">
-                    <a href="javascript:setpdf();"><button type="button">設定</button></a>
+                    <a href="javascript:setpdfcd();"><button type="button">設定</button></a>
                     &nbsp;&nbsp;
-                    <a href="javascript:removepdf();"><button type="button">解除</button></a>
+                    <a href="javascript:removepdfcd();"><button type="button">解除</button></a>
                 </td>
             </tr>
         </table>
@@ -180,19 +180,19 @@
         document.querySelector('[name="select-odcd"]').value = "";
     }
     // 電子マニュアル表示 PDF種類セット
-    function setpdf() {
-        const pdf = document.querySelector('[name="select-pdf"]').value;
-        if (pdf == null || pdf == "") {
+    function setpdfcd() {
+        const pdfcd = document.querySelector('[name="select-pdfcd"]').value;
+        if (pdfcd == null || pdfcd == "") {
             alert("PDF種類を選択してください．");
             return;
         }
-        localStorage.setItem("pdf", pdf);
+        localStorage.setItem("pdfcd", pdfcd);
         location.reload();
     }
     // 電子マニュアル表示 PDF種類解除
-    function removepdf() {
-        localStorage.removeItem("pdf"); 
-        document.querySelector('[name="select-pdf"]').value = "";
+    function removepdfcd() {
+        localStorage.removeItem("pdfcd"); 
+        document.querySelector('[name="select-pdfcd"]').value = "";
     }
 </script>
 </body>

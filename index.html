@@ -49,7 +49,7 @@
         </div>
         <!-- 業務メニュー 2/25現在３つまで(4*1行, 3*1行, 2*2行) -->
         <div class="item-title">
-            業務メニュー <i class="fas fa-paw"></i>
+            <i class="fas fa-paw"></i> 業務メニュー
         </div>
         <div class="item">
             <a href="javascript:LeaktestReport('6050');">
@@ -95,7 +95,7 @@
 
         <!-- その他サービス 2/25現在１つ -->
         <div class="item-title">
-            その他のサービス <i class="fas fa-paw"></i>
+            <i class="fas fa-paw"></i> その他のサービス
         </div>
         <div class="item">
             <a href="./project-quiz-arcweld">
@@ -145,13 +145,13 @@
     function ManualSearch() {
         const hostname = location.hostname;
         // ローカルストレージデータを取得
-        const lsOdcd = localStorage.getItem("odcd");
-        if (lsOdcd == "" || lsOdcd == null) {
+        const lspdfcd = localStorage.getItem("pdfcd");
+        if (lspdfcd == "" || lspdfcd == null) {
             alert("先に設定画面にて設置場所の設定を行ってください．");
             location.href = `./settings.html`;
             return false;
         }
-        location.href = `https://${hostname}:53020/${lsOdcd}`;
+        location.href = `https://${hostname}:53020/${lspdfcd}`;
     }
 
     // 洩れ検査作業日報支援システム起動
