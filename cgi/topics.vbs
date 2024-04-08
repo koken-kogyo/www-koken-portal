@@ -27,7 +27,7 @@ End Function
 	Dim i
 
 	Set objFso = WScript.CreateObject("Scripting.FileSystemObject")
-	Set objFile = objFso.OpenTextFile("D:\inetKoken\wwwroot\topics\topics.csv")
+	Set objFile = objFso.OpenTextFile("D:\inetKoken\www-koken-portal\topics\topics.csv")
 
 	If Err.Number = 0 Then
 		i = 0
@@ -43,7 +43,6 @@ End Function
 		WScript.Echo
 		For i = 0 To UBound(aryRet)
 			WScript.Echo aryRet(i)
-			WScript.Echo ""
 		Next
 	Else
 		'エラーの内容(Description)出力

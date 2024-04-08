@@ -30,8 +30,11 @@ coverage/
 # production
 build/
 
-#cert
-cert/
+# IIS
+web.config
+
+# topics
+topics*.csv
 
 # misc
 .DS_Store

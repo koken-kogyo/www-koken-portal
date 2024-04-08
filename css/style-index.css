@@ -80,8 +80,15 @@
     padding: 0.3rem 0rem;
 }
 .containers #news-list {
-    margin: 2rem 2rem 0 3rem;
     grid-column: 2 / 5;
+    margin: 0.5rem 0 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255, 1);
+    text-align: left;
+    font-family: "system-ui", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    overflow: auto;
 }
 .containers #news-list p {
     color: #777;
