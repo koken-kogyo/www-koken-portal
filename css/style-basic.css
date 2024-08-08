@@ -97,6 +97,13 @@ footer .copyright {
     padding: 3px 0 0 0;
     left: calc((100vw / 2) - 120px);
 }
+/* === [responsible] === */
+footer .responsible {
+    position: fixed; /* 要素の位置：絶対*/
+    bottom: 2px;
+    right: 160px;
+    color: rgb(255, 255, 255, 0.2);
+}
 /* === [ページの先頭に戻る] === */
 footer .gotop {
     position: fixed; /* 要素の位置：絶対*/

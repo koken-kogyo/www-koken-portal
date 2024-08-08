@@ -70,6 +70,24 @@
             </a>
         </div>
         <div class="item">
+            <a href="javascript:ManualSearch();">
+                <img class="itemimg" src="./images/本読みの子.png" alt="menu04">
+                <div class="itemtext">電子マニュアル</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="javascript:MP();">
+                <img class="itemimg" src="./images/mp.png" alt="menu05">
+                <div class="itemtext">切 削 工 程</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="javascript:DeliveryList();">
+                <img class="itemimg" src="./images/物流工程.png" alt="menu06">
+                <div class="itemtext">出荷指示書</div>
+            </a>
+        </div>
+        <!-- div class="item" -->
             <!-- PC-Edgeでの検証　開く・ダウンロード・コンテント表示・インデックス画像表示はOK -->
             <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/open.do       ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
             <!-- a href="http://apemsv/PEMasterEM/docspace/sdk/download.do   ?id=APEMSV%3AOYAHINBAN%3A133834989822265&enc=UTF-8" target="_blank" -->
@@ -87,16 +105,13 @@
                 <div class="itemtext">APEMコンテント表示</div>
             </a>
             -->
-            <a href="javascript:ManualSearch()">
-                <img class="itemimg" src="./images/本読みの子.png" alt="menu04">
-                <div class="itemtext">電子マニュアル</div>
-            </a>
-        </div>
+        <!-- /div -->
 
-        <!-- その他サービス 2/25現在１つ -->
+        <!-- その他サービス -->
         <div class="item-title">
             <i class="fas fa-paw"></i> その他のサービス
         </div>
+        <!--
         <div class="item">
             <a href="./project-quiz-arcweld">
                 <img class="itemimg" src="./images/電気溶接.png" alt="menu11">
@@ -109,18 +124,14 @@
                 <div class="itemtext">漢字検定(不定期更新)</div>
             </a>
         </div>
-        <div class="item">
-            <a href="./monitor.html">
-                <img class="itemimg" src="./images/sample.png" alt="menu12">
-                <div class="itemtext">モニター解像度判定</div>
-            </a>
-        </div>
+        -->
     </div>
 
     <!-- Footer -->
 	<footer>
         <a class="goback" href="javascript:history.back()">[戻る]</a>
 	    <a class="copyright">&copy; 2023 Koken Kogyo Co. All rights reserved.</a>
+        <a class="responsible"></a>
         <a class="gotop" href="#">ページの先頭に戻る</a>
     </footer>
 </div>
@@ -219,8 +230,19 @@
         } else {
             location.href = `https://${hostname}:53010/es/${odcd}`;
         }
+    }
 
-}
+    // 切削表示システム起動
+    function MP() {
+        const hostname = location.hostname;
+        location.href = `https://${hostname}:53030/`;
+    }
+
+    // 物流出荷指示書表示システム起動
+    function DeliveryList() {
+        const hostname = location.hostname;
+        location.href = `https://${hostname}:53040/wh/`;
+    }
 </script>
 </body>
 </html>
