@@ -3,7 +3,6 @@ body {
     font-family: "Arial", "メイリオ", sans-serif;
     position: relative; /* 要素の位置：相対*/
     width: 100vw;
-    height: 100vh;
     margin: 0;
     padding: 0;
     /* background: rgb(0, 168, 169, 1.0); Kubota-Color */
@@ -24,13 +23,15 @@ a {
 /*  header
 /* =========================================================================== */
 header {
+    position: fixed;
+    display: block;
     color: rgb(255,255,255);
     font-size: x-large;
     top: 0;
     width: 100vw;
     height: 40px;
-/*    background: rgb(50, 50, 50, 1); */
-    background: rgb(175, 25 ,25, 1);
+    background: rgb(50, 50, 50, 1);
+/*    background: rgb(175, 25 ,25, 1); */
     z-index: 999;
 }
 #logo a {
@@ -42,7 +43,7 @@ header {
 }
 #menutitle {
     position: relative;
-    top: 5px;
+    top: 3px;
     left: calc((100vw / 2) - 4.5em - 6em);
 }
 #settings {
