@@ -76,14 +76,20 @@
             </a>
         </div>
         <div class="item">
+            <a href="javascript:LeaktestSearch();">
+                <img class="itemimg" src="./images/sample.png" alt="menu05">
+                <div class="itemtext">日報データ検索</div>
+            </a>
+        </div>
+        <div class="item">
             <a href="javascript:MP();">
-                <img class="itemimg" src="./images/mp.png" alt="menu05">
+                <img class="itemimg" src="./images/mp.png" alt="menu06">
                 <div class="itemtext">切 削 工 程</div>
             </a>
         </div>
         <div class="item">
             <a href="javascript:DeliveryList();">
-                <img class="itemimg" src="./images/物流工程.png" alt="menu06">
+                <img class="itemimg" src="./images/物流工程.png" alt="menu07">
                 <div class="itemtext">出荷指示書</div>
             </a>
         </div>
@@ -230,6 +236,11 @@
         } else {
             location.href = `https://${hostname}:53010/es/${odcd}`;
         }
+    }
+
+    // 日報データ検索画面起動
+    function LeaktestSearch() {
+        location.href = `https://${location.hostname}:53010/essearch`;
     }
 
     // 切削表示システム起動
