@@ -53,13 +53,13 @@
         </div>
         <div class="item">
             <a href="javascript:LeaktestReport('6070');">
-                <img class="itemimg" src="./images/S気密さん炉中さん.png" alt="menu02">
+                <img class="itemimg" src="./images/S気密さん炉中さん.png" alt="menu01">
                 <div class="itemtext">炉中洩れ検査</div>
             </a>
         </div>
         <div class="item">
             <a href="javascript:LeaktestReport('6050');">
-                <img class="itemimg" src="./images/S気密さん黄銅さん.png" alt="menu01">
+                <img class="itemimg" src="./images/S気密さん黄銅さん.png" alt="menu02">
                 <div class="itemtext">黄銅洩れ検査</div>
             </a>
         </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="item">
             <a href="javascript:LeaktestSearch();">
-                <img class="itemimg" src="./images/sample.png" alt="menu05">
+                <img class="itemimg" src="./images/虫眼鏡の子.png" alt="menu05">
                 <div class="itemtext">日報データ検索</div>
             </a>
         </div>
@@ -212,7 +212,11 @@
             if (lsOdcd != null && lsOdcd != "" && odc == lsOdcd.substring(0, 4)) {
                 odcd = lsOdcd;
             } else {
-                odcd = "60707";
+                if (myOS == "windows") {
+                    odcd = "6070";
+                } else {
+                    odcd = "60707";
+                }
             }
 
         // 炉中目視検査起動
@@ -221,7 +225,11 @@
             if (lsOdcd != null && lsOdcd != "" && (lsOdcd.substring(0, 4) == "6071" || lsOdcd.substring(0, 4) == "6072")) {
                 odcd = lsOdcd;
             } else {
-                odcd = "60717";
+                if (myOS == "windows") {
+                    odcd = "6071";
+                } else {
+                    odcd = "60717";
+                }
             }
             
         // Default起動
@@ -251,8 +259,18 @@
 
     // 物流出荷指示書表示システム起動
     function DeliveryList() {
+
+        // ローカルストレージデータを取得
+        const lsUserid = localStorage.getItem("userid");
+        const lsPassword = localStorage.getItem("password");
+
+        // 自動ログイン設定を判定
         const hostname = location.hostname;
-        location.href = `https://${hostname}:53040/wh/`;
+        if (lsUserid != null && lsPassword != "") {
+            location.href = `https://${hostname}:53040/direct/${lsUserid}/${lsPassword}/wh/`;
+        } else {
+            location.href = `https://${hostname}:53040/wh/`;
+        }
     }
 </script>
 </body>
