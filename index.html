@@ -253,8 +253,17 @@
 
     // 切削表示システム起動
     function MP() {
+        // ローカルストレージデータを取得
+        const lsUserid = localStorage.getItem("userid");
+        const lsPassword = localStorage.getItem("password");
+
+        // 自動ログイン設定を判定
         const hostname = location.hostname;
-        location.href = `https://${hostname}:53030/`;
+        if (lsUserid != null && lsPassword != "") {
+            location.href = `https://${hostname}:53030/direct/${lsUserid}/${lsPassword}/mp/`;
+        } else {
+            location.href = `https://${hostname}:53030/mp/`;
+        }
     }
 
     // 物流出荷指示書表示システム起動

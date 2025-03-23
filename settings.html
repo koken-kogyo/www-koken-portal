@@ -173,12 +173,14 @@
         }
         localStorage.setItem("odcd", odcd);
         alert("設定しました．");
+        location.href = "/";
     }
     // 洩れ検査作業日報 設置場所解除
     function removeodcd() {
         localStorage.removeItem("odcd"); 
         document.querySelector('[name="select-odcd"]').value = "";
         alert("解除しました．");
+        location.href = "/";
     }
     // 電子マニュアル表示 PDF種類セット
     function setpdfcd() {
@@ -189,12 +191,14 @@
         }
         localStorage.setItem("pdfcd", pdfcd);
         alert("設定しました．");
+        location.href = "/";
     }
     // 電子マニュアル表示 PDF種類解除
     function removepdfcd() {
         localStorage.removeItem("pdfcd"); 
         document.querySelector('[name="select-pdfcd"]').value = "";
         alert("解除しました．");
+        location.href = "/";
     }
 </script>
 </body>
