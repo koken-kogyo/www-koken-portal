@@ -132,7 +132,7 @@
             </a>
         </div>
         <div class="item">
-            <a href="https://nabev2:53010/specification">
+            <a href="javascript:SpecificationES00();">
                 <img class="itemimg" src="./images/specification.png" alt="menu13">
                 <div class="itemtext">検査日報 仕様書</div>
             </a>
@@ -288,6 +288,12 @@
             location.href = `https://${hostname}:53040/wh/`;
         }
     }
+
+    // 検査日報仕様書
+    function SpecificationES00() {
+        location.href = `https://${location.hostname}:53010/specification`;
+    }
+
 </script>
 </body>
 </html>
