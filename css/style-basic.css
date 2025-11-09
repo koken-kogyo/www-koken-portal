@@ -99,7 +99,7 @@ footer .copyright {
     left: calc((100vw / 2) - 120px);
 }
 /* === [responsible] === */
-footer .responsible {
+footer #responsible {
     position: fixed; /* 要素の位置：絶対*/
     bottom: 2px;
     right: 160px;

@@ -144,11 +144,15 @@
 	<footer>
         <a class="goback" href="javascript:history.back()">[戻る]</a>
 	    <a class="copyright">&copy; 2023 Koken Kogyo Co. All rights reserved.</a>
-        <a class="responsible"></a>
+        <a id="responsible"></a>
         <a class="gotop" href="#">ページの先頭に戻る</a>
     </footer>
 </div>
 <script type="text/javascript">
+
+    // 画面サイズ変更時に更新
+    const screenSizeElement = document.getElementById("responsible");
+    window.addEventListener('resize', updateScreenSize);
 
     window.onload = function() {
         const hostname = location.hostname;
@@ -170,6 +174,17 @@
             document.getElementById("news-list").innerTEXT = "読み込み失敗";
         }
     }
+
+    function updateScreenSize() {
+        const width1 = window.innerWidth;
+        const width2 = Math.round(window.visualViewport.width); /* Andoroid携帯だけ小数点で入ってくる為 */
+        const width = (width1 != width2) ? `${width1}:${width2}` : `${width1}`; 
+        const height1 = window.innerHeight;
+        screenSizeElement.innerText = `W:${width}*H:${height}`;
+    }
+
+    // 初期表示
+    updateScreenSize();
 
     // 電子マニュアル表示システム起動
     function ManualSearch() {
