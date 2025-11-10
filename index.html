@@ -179,7 +179,7 @@
         const width1 = window.innerWidth;
         const width2 = Math.round(window.visualViewport.width); /* Andoroid携帯だけ小数点で入ってくる為 */
         const width = (width1 != width2) ? `${width1}:${width2}` : `${width1}`; 
-        const height1 = window.innerHeight;
+        const height = window.innerHeight;
         screenSizeElement.innerText = `W:${width}*H:${height}`;
     }
 
